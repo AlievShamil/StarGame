@@ -26,7 +26,6 @@ public class StarGame extends ApplicationAdapter {
     @Override
     public void render() {
         setBackgroundColor();
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.draw(img, (Gdx.graphics.getWidth() - width) / 2,
                 (Gdx.graphics.getHeight() - height) / 2);
@@ -34,20 +33,20 @@ public class StarGame extends ApplicationAdapter {
     }
 
     private void setBackgroundColor() {
-        float r = MathUtils.random(0, 1);
-        float g = MathUtils.random(0, 1);
-        float b = MathUtils.random(0, 1);
+        float r = MathUtils.random(0f, 1f);
+        float g = MathUtils.random(0f, 1f);
+        float b = MathUtils.random(0f, 1f);
 
         if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && bool) {
             Gdx.gl.glClearColor(r, g, b, 1);
-//            System.out.println(r + "  " + g + "   " + b);
+            System.out.println(r+" "+g+" "+b);
             bool = false;
         }
         if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT) && !bool) {
             Gdx.gl.glClearColor(r, g, b, 1);
-//            System.out.println(r + "  " + g + "   " + b);
             bool = true;
         }
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
     @Override
