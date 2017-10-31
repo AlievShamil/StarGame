@@ -40,12 +40,12 @@ public class StarGame extends ApplicationAdapter {
 
         if (Gdx.input.isButtonPressed(Input.Buttons.LEFT) && bool) {
             Gdx.gl.glClearColor(r, g, b, 1);
-            System.out.println(r + "  " + g + "   " + b);
+//            System.out.println(r + "  " + g + "   " + b);
             bool = false;
         }
         if (Gdx.input.isButtonPressed(Input.Buttons.RIGHT) && !bool) {
             Gdx.gl.glClearColor(r, g, b, 1);
-            System.out.println(r + "  " + g + "   " + b);
+//            System.out.println(r + "  " + g + "   " + b);
             bool = true;
         }
     }
