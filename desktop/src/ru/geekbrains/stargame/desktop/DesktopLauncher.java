@@ -2,13 +2,17 @@ package ru.geekbrains.stargame.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import ru.geekbrains.stargame.StarGame;
+
+import ru.geekbrains.stargame.Star2DGame;
 
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.width = 1280;
-		config.height = 720;
-		new LwjglApplication(new StarGame(), config);
+//		float aspect = 480f/854f;
+		float aspect = 3f/4f;
+
+		config.width = (int) (config.height*aspect);
+		config.height = 600;
+		new LwjglApplication(new Star2DGame(), config);
 	}
 }
