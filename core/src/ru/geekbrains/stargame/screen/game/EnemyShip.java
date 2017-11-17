@@ -32,7 +32,6 @@ public class EnemyShip extends Ship {
 
     }
 
-    // вектор скорости, который отслеживает звезда
     private final Vector2 trackingV;
     // вектор суммы скоростей
     private final Vector2 sumV = new Vector2();
@@ -41,7 +40,7 @@ public class EnemyShip extends Ship {
     private Sound bulletSound;
 
     public EnemyShip(TextureAtlas atlas, float vx, float vy, float height, Vector2 trackingV, BulletPool bulletPool, Sound bulletSound) {
-        super(atlas.findRegion(getEnemyShipRegion()),1,2,2);
+        super(atlas.findRegion(enemy.get((int) Rnd.nextFloat(0,enemy.size()))),1,2,2);
 //        super(atlas.findRegion("enemy2"),1,2,2);
         v.set(vx, vy);
         this.trackingV = trackingV;
@@ -51,7 +50,7 @@ public class EnemyShip extends Ship {
         this.bulletV.set(0, 0.5f);
         this.bulletDamage = 1;
         this.bulletPool = bulletPool;
-        this.reloadInterval = 0.9f;
+        this.reloadInterval = Rnd.nextFloat(0.4f,1f);
         this.bulletSound = bulletSound;
     }
 
@@ -72,11 +71,6 @@ public class EnemyShip extends Ship {
             reloadTimer = 0f;
             shoot(bulletSound);
         }
-        if (getRight() > worldBounds.getRight()) {
-            setRight(worldBounds.getRight());}
-        if (getLeft() < worldBounds.getLeft()) {
-            setLeft(worldBounds.getLeft());
-        }
 
         checkAndHandleBounds();
     }
@@ -86,10 +80,5 @@ public class EnemyShip extends Ship {
         if (getLeft() > worldBounds.getRight()) setRight(worldBounds.getLeft());
         if (getTop() < worldBounds.getBottom()) setBottom(worldBounds.getTop());
         if (getBottom() > worldBounds.getTop()) setTop(worldBounds.getBottom());
-    }
-
-    public static String getEnemyShipRegion() {
-        System.out.println(enemy.get((int) Rnd.nextFloat(0,enemy.size())));
-        return enemy.get((int) Rnd.nextFloat(0,enemy.size()));
     }
 }
